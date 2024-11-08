@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <style>
+        /* Centering the content on the page */
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        /* Styling the container */
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        /* Styling the input and button */
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #ffffff;
+            color: #333;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Styling the QR code display */
+        .generator img {
+            margin-top: 20px;
+            width: 100%; /* Scales the QR code to fit the container */
+            max-width: 200px; /* Limit the max size of the QR code */
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <h1>QR Code Generator</h1>
+            <p>Insert a link below to generate a QR code</p>
+        </div>
+        <form action="/" method="POST">
+            <input type="text" name="link" placeholder="Enter link here" required>
+            <button type="submit">Generate QR</button>
+        </form>
+        <div class="generator">
+            {% if data %}
+                <img src="{{ data }}" alt="Generated QR Code">
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
